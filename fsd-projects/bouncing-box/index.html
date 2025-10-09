@@ -59,11 +59,11 @@
         });
 
         // Every 50 milliseconds, call the update Function (see below)
-        setInterval(update, 50);
+        var interval = setInterval(update, 50);
 
         // Every time the box is clicked, call the handleBoxClick Function (see below)
         box.on("click", handleBoxClick);
-
+        board.on("click", handleClick);
         // moves the Box to a new position on the screen along the X-Axis
         function moveBoxTo(newPositionX,newPositionY) {
           box.css("left", newPositionX);
@@ -79,15 +79,31 @@
         /////////////////// YOUR CODE BELOW HERE /////////////////////////
         //////////////////////////////////////////////////////////////////
 
+        function endGame(){
+          clearInterval(interval);
+        }
+
+        function getRandomColor(){
+          var randR = Math.floor(Math.random() * 255);
+          var randG = Math.floor(Math.random() * 255);
+          var randB = Math.floor(Math.random() * 255);
+
+          return colorStr = "rgb("+String(randR)+","+ String(randG)+ ","+String(randB)+")";
+           
+        }
+
         // TODO 2 - Variable declarations
         var colorStr;
         var positionX = 0;
         var positionY = 0;
         var points = 0;
+        var passpoints = points;
         var speed = 10;
         var speedY = 5;
         var muilt = 3;
+        var misClicks = 0;
 
+        
         /**
          * This Function will be called 20 times/second.
          * Each time it is called, it should move the Box to a new location.
@@ -98,6 +114,8 @@
 
           positionX = positionX + speed;
           positionY = positionY + speedY;
+
+          passpoints = points;
 
           if (positionX+60 > boardWidth) {
             speed *= -1;
@@ -120,32 +138,36 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
-          var randNumX = Math.random() * (boardWidth-70);
-          var randNumY = Math.random() * (boardHeight-70);
+          var randNumX = Math.random() * (boardWidth-box.width());
+          var randNumY = Math.random() * (boardHeight-box.width());
           positionX = randNumX;
           positionY = randNumY;
           changeBoxText(points);
-
-          function getRandomColor(){
-            var randR = Math.floor(Math.random() * 255);
-            var randG = Math.floor(Math.random() * 255);
-            var randB = Math.floor(Math.random() * 255);
-
-           return colorStr = "rgb("+String(randR)+","+ String(randG)+ ","+String(randB)+")";
-           
-          }
           getRandomColor();
           
           if(points%3 === 0){
             muilt += 0.5;
           }
-           
+          
           points += 1;
           speed = muilt * points + 10;
           speedY = muilt * points + 5;
 
           box.css("background-color", colorStr);
         }
+
+        function handleClick(){
+          if(points === passpoints){
+            misClicks++;
+            if (misClicks >= 10){
+              endGame();
+              alert("Game Over! Too many missed clicks.");
+            }
+          }
+            
+          
+        }
+
       })();
     </script>
   </body>
