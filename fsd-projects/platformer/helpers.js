@@ -831,7 +831,7 @@ function handleKeyUp(e) {
   if (e.key === " ") {
     keyPress.space = false;
   }
-}
+} 
 
 function loadJson() {
   getJSON("halle.json", JsonFunction); //runs this before the setup because of timing things

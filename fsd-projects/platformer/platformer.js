@@ -14,7 +14,7 @@ $(function () {
       firstTimeSetup = false;
       //start game
       setInterval(main, 1000 / frameRate);
-    }
+    } 
 
     // Create walls - do not delete or modify this code
     createPlatform(-50, -50, canvas.width + 100, 50); // top wall
@@ -27,16 +27,18 @@ $(function () {
     //////////////////////////////////
 
     // TODO 1 - Enable the Grid
-    // toggleGrid();
+     toggleGrid();
 
 
     // TODO 2 - Create Platforms
-
-
-
+    createPlatform(500,60, 100 , 20);
+    createPlatform(550,550, 100 , 20);
+    createPlatform(600,450, 100 , 20);
+    createPlatform(700,350, 100 , 20);
+    createPlatform(750,250, 100 , 20);
 
     // TODO 3 - Create Collectables
-
+    createCollectable("database",750, 600, 0.1 , 1);
 
 
     
