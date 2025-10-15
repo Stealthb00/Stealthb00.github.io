@@ -605,7 +605,7 @@ function createPlatform(
   color = "grey",
   minX = null,
   maxX = null,
-  speed = 1
+  speed = 1000
 ) {
   platforms.push({
     x,

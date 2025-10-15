@@ -31,19 +31,31 @@ $(function () {
 
 
     // TODO 2 - Create Platforms
-    createPlatform(500,60, 100 , 20);
-    createPlatform(550,550, 100 , 20);
-    createPlatform(600,450, 100 , 20);
-    createPlatform(700,350, 100 , 20);
-    createPlatform(750,250, 100 , 20);
+    color = ["DarkGreen","DarkSeaGreen","DarkOliveGreen","ForestGreen","DarkRed"];
+    ranColor = color[Math.floor(Math.random()*color.length-1)];
+    
+    createPlatform(550,650, 100 , 15, color[Math.floor(Math.random()*color.length)]);
+    createPlatform(550,515, 100 , 15, color[Math.floor(Math.random()*color.length)]);
+    createPlatform(600,200, 100 , 540, color[Math.floor(Math.random()*color.length)]);
+    createPlatform(300,400, 100 , 20, color[Math.floor(Math.random()*color.length)]);
+    createPlatform(300,265, 100 , 20, color[Math.floor(Math.random()*color.length)]);
+    createPlatform(300,100, 90, 320, color[Math.floor(Math.random()*color.length)]);
+    createPlatform(800,200, 90, 20, color[Math.floor(Math.random()*color.length)], 800, 1300, 1);
+
+    createPlatform(100, 175, 100, 10, "lightblue");
+    createPlatform(100, 100, 100, 10, "lightblue");
+    createPlatform(100, 175, 10, -75, "lightblue");
+    createPlatform(190, 100, 10, 75, "lightblue");
 
     // TODO 3 - Create Collectables
-    createCollectable("database",750, 600, 0.1 , 1);
+    createCollectable("database",625, 150, 0.1 , 1);
+    createCollectable("diamond",130, 110, 0.1 , 1.01);
+    createCollectable("database", 150, 300, 0.1, 1);
 
 
     
     // TODO 4 - Create Cannons
-
+    createCannon("right", 300, 2000);
 
     
     
